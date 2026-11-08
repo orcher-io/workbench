@@ -1,0 +1,8 @@
+export { <%= propertyName %>Definition } from './definition';
+export { <%= propertyName %>Module } from './module';
+<% if (withEditor) { %>
+export { <%= className %>Editor } from './components/<%= fileName %>-editor';
+<% } %>
+<% if (withView) { %>
+export { <%= className %>View } from './components/<%= fileName %>-view';
+<% } %>

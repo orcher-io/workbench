@@ -1,0 +1,48 @@
+{
+  "name": "@orcher/workbench-core",
+  "version": "0.1.0",
+  "description": "Core shell and bootstrap for the workbench",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orcher-io/workbench.git"
+  },
+  "keywords": [
+    "shell",
+    "core",
+    "workbench"
+  ],
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@orcher/workbench-di": "workspace:^",
+    "@orcher/workbench-plugin-api": "workspace:^",
+    "@orcher/workbench-services": "workspace:^",
+    "@orcher/workbench-ui": "workspace:^",
+    "@orcher/workbench-window-manager": "workspace:^",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/themes": "^3.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nx build @orcher/workbench-core"
+  }
+}

@@ -1,0 +1,16 @@
+'use client';
+
+import { Box, Heading, Text } from '@radix-ui/themes';
+
+export function <%= className %>Editor() {
+  return (
+    <Box p="4">
+      <Heading size="4" mb="2">
+        <%= className %> Editor
+      </Heading>
+      <Text color="gray">
+        This is the <%= className %> editor component.
+      </Text>
+    </Box>
+  );
+}

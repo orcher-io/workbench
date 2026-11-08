@@ -1,0 +1,60 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next",
+      },
+    ],
+    "baseUrl": "../..",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "jsx": "preserve",
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "../../packages/window-manager",
+    },
+    {
+      "path": "../../packages/ui",
+    },
+    {
+      "path": "../../packages/services",
+    },
+    {
+      "path": "../../plugins/builtin/welcome",
+    },
+    {
+      "path": "../../plugins/builtin/explorer",
+    },
+    {
+      "path": "../../plugins/builtin/settings",
+    },
+    {
+      "path": "../../plugins/builtin/search",
+    },
+    {
+      "path": "../../plugins/builtin/breadcrumb-bar",
+    },
+    {
+      "path": "../../plugins/builtin/header",
+    },
+    {
+      "path": "../../plugins/builtin/bookmarks",
+    },
+    {
+      "path": "../../packages/plugin-api",
+    },
+    {
+      "path": "../../packages/di",
+    },
+    {
+      "path": "../../packages/core",
+    },
+  ],
+}

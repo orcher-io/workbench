@@ -1,0 +1,41 @@
+import type { PluginDefinition } from '@orcher/workbench-plugin-api';
+
+export const <%= propertyName %>Definition: PluginDefinition = {
+  id: '@orcher/workbench-plugin-<%= fileName %>',
+  version: '0.0.1',
+  name: '<%= className %>',
+  description: '<%= className %> plugin',
+  activationEvents: ['onStartup'],
+  contributes: {
+<% if (withCommand) { %>
+    commands: [
+      {
+        id: '<%= fileName %>.hello',
+        title: 'Hello from <%= className %>',
+        category: '<%= className %>',
+      },
+    ],
+<% } %>
+<% if (withEditor) { %>
+    editors: [
+      {
+        id: '<%= fileName %>.editor',
+        name: '<%= className %> Editor',
+        selector: {
+          scheme: '<%= fileName %>',
+        },
+      },
+    ],
+<% } %>
+<% if (withView) { %>
+    views: {
+      explorer: [
+        {
+          id: '<%= fileName %>.view',
+          name: '<%= className %>',
+        },
+      ],
+    },
+<% } %>
+  },
+};

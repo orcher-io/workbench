@@ -1,0 +1,13 @@
+import type {
+  PluginModule,
+  PluginActivationContext,
+} from '@orcher/workbench-plugin-api';
+
+export const sampleModule: PluginModule = {
+  activate(_context: PluginActivationContext) {
+    // Register command handlers, providers, etc.
+    // context.subscriptions.push(
+    //   context.container.resolve(CommandService).registerHandler(...)
+    // );
+  },
+};

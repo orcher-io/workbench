@@ -1,0 +1,39 @@
+{
+  "name": "@orcher/workbench-demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/demo/src",
+  "projectType": "application",
+  "tags": ["scope:workbench", "type:app"],
+  "targets": {
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@orcher/workbench-demo:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@orcher/workbench-demo:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "@orcher/workbench-demo:build:production",
+          "dev": false
+        }
+      }
+    },
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/demo"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    }
+  }
+}

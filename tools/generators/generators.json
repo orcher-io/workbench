@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "plugin": {
+      "factory": "./plugin/generator",
+      "schema": "./plugin/schema.json",
+      "description": "Generate a new workbench plugin"
+    }
+  }
+}

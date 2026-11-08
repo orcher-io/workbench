@@ -1,0 +1,44 @@
+{
+  "name": "@orcher/workbench-services",
+  "version": "0.1.0",
+  "description": "Core workbench services - extension registry, commands, events",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orcher-io/workbench.git"
+  },
+  "keywords": [
+    "services",
+    "extension",
+    "commands",
+    "events",
+    "workbench"
+  ],
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "dependencies": {
+    "@orcher/workbench-di": "workspace:^",
+    "@orcher/workbench-plugin-api": "workspace:^"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nx build @orcher/workbench-services"
+  }
+}

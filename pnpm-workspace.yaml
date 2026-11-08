@@ -1,0 +1,7 @@
+packages:
+  - 'packages/*'
+  - 'plugins/builtin/*'
+  - 'apps/*'
+  - 'tools'
+
+autoInstallPeers: true

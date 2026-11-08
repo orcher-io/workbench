@@ -1,0 +1,39 @@
+{
+  "name": "@orcher/workbench-di",
+  "version": "0.1.0",
+  "description": "Lightweight dependency injection container for the workbench",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orcher-io/workbench.git"
+  },
+  "keywords": [
+    "dependency-injection",
+    "ioc",
+    "container",
+    "workbench"
+  ],
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nx build @orcher/workbench-di"
+  }
+}

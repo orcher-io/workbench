@@ -1,0 +1,55 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./plugins/builtin/bookmarks"
+    },
+    {
+      "path": "./plugins/builtin/explorer"
+    },
+    {
+      "path": "./plugins/builtin/settings"
+    },
+    {
+      "path": "./plugins/builtin/welcome"
+    },
+    {
+      "path": "./packages/window-manager"
+    },
+    {
+      "path": "./plugins/builtin/sample"
+    },
+    {
+      "path": "./plugins/builtin/search"
+    },
+    {
+      "path": "./packages/plugin-api"
+    },
+    {
+      "path": "./packages/services"
+    },
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/di"
+    },
+    {
+      "path": "./packages/ui"
+    },
+    {
+      "path": "./apps/demo"
+    },
+    {
+      "path": "./plugins/builtin/breadcrumb-bar"
+    },
+    {
+      "path": "./plugins/builtin/header"
+    },
+    {
+      "path": "./tools"
+    }
+  ]
+}

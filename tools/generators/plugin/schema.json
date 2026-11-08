@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "Plugin",
+  "title": "Create a Workbench Plugin",
+  "description": "Generate a new plugin for the workbench",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Plugin name (e.g., 'my-plugin')",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What is the name of the plugin?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "Directory where the plugin will be created",
+      "default": "plugins/builtin"
+    },
+    "withEditor": {
+      "type": "boolean",
+      "description": "Include an editor contribution",
+      "default": true
+    },
+    "withView": {
+      "type": "boolean",
+      "description": "Include a view contribution",
+      "default": false
+    },
+    "withCommand": {
+      "type": "boolean",
+      "description": "Include a command contribution",
+      "default": true
+    }
+  },
+  "required": ["name"]
+}

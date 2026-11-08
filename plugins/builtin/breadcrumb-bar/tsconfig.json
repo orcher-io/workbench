@@ -1,0 +1,23 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    {
+      "path": "../../../tools"
+    },
+    {
+      "path": "../../../packages/ui"
+    },
+    {
+      "path": "../../../packages/window-manager"
+    },
+    {
+      "path": "../../../packages/plugin-api"
+    }
+  ]
+}
