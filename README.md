@@ -128,6 +128,22 @@ pnpm test:run
 CI runs a frozen install, `nx sync:check`, build, typecheck and tests on every
 pull request.
 
+## Releasing
+
+1. Bump versions in a pull request: `pnpm release --skip-publish`.
+2. Merge it, then run the **Publish** workflow from the Actions tab. It
+   publishes every package whose version is not on npm yet, through npm
+   trusted publishing, so no token is involved.
+
+A brand-new package has to exist on npm before it can trust the workflow:
+publish its first version by hand (`npm login`, then `pnpm publish --access
+public` in its folder), then register the workflow as its trusted publisher:
+
+```bash
+npx -y npm@^11.15.0 trust github @orcher/workbench-<name> \
+  --repo orcher-io/workbench --file publish.yml --allow-publish
+```
+
 ## License
 
 Apache-2.0 — see [LICENSE](LICENSE).

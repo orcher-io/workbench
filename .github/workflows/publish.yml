@@ -3,12 +3,18 @@ name: Publish
 # Publishes every package whose version is not on npm yet; packages already
 # published at their current version are skipped. Bump versions in a PR
 # (`pnpm release --skip-publish`), merge it, then run this.
+#
+# Authenticates with npm trusted publishing (OIDC): no token is stored
+# anywhere, and npm attaches provenance automatically. Each package names
+# this repo and this workflow file as its trusted publisher on npmjs.com, so
+# renaming this file breaks publishing. A brand-new package must be published
+# once by hand before it can be trusted (see README, Releasing).
 on:
   workflow_dispatch:
 
 permissions:
   contents: read
-  id-token: write # npm provenance
+  id-token: write # npm trusted publishing (OIDC)
 
 concurrency:
   group: publish
@@ -27,7 +33,10 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          registry-url: https://registry.npmjs.org
+
+      # Trusted publishing needs npm >= 11.5.1; pnpm publish runs `npm publish`
+      - name: npm with trusted publishing
+        run: npm install -g npm@^11.15.0
 
       - name: Install
         run: pnpm install --frozen-lockfile
@@ -44,6 +53,3 @@ jobs:
           --filter "./packages/*"
           --filter "./plugins/builtin/*"
           publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: 'true'
