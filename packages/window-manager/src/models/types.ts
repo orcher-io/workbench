@@ -81,6 +81,14 @@ export interface TabState {
 /**
  * Options for opening a tab
  */
+/**
+ * What a caller supplies to open a tab. The id is generated; `pinned` and
+ * `preview` fall back to TabOpenOptions and then false, and a new tab is clean
+ * unless `dirty` says otherwise.
+ */
+export type TabInit = Omit<TabState, 'id' | 'pinned' | 'preview' | 'dirty'> &
+  Partial<Pick<TabState, 'pinned' | 'preview' | 'dirty'>>;
+
 export interface TabOpenOptions {
   /** Activate the tab after opening */
   activate?: boolean;

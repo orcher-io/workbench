@@ -8,6 +8,7 @@ import type {
   SplitNode,
   TabGroupNode,
   TabState,
+  TabInit,
   TabOpenOptions,
   SplitOptions,
   DropPosition,
@@ -29,7 +30,7 @@ interface WindowManagerState {
   preMaximizeLayout: LayoutState | null;
 
   // Tab operations
-  openTab: (tab: Omit<TabState, 'id'>, options?: TabOpenOptions) => string;
+  openTab: (tab: TabInit, options?: TabOpenOptions) => string;
   closeTab: (tabId: string) => boolean;
   closeAllTabs: (groupId: string) => void;
   closeOtherTabs: (tabId: string) => void;
@@ -235,8 +236,9 @@ export const useWindowManager = create<WindowManagerState>()(
         const tab: TabState = {
           ...tabData,
           id: tabId,
-          pinned: options.pin ?? false,
-          preview: options.preview ?? false,
+          pinned: options.pin ?? tabData.pinned ?? false,
+          preview: options.preview ?? tabData.preview ?? false,
+          dirty: tabData.dirty ?? false,
         };
 
         set((state) => {
