@@ -11,6 +11,8 @@ interface RegisteredCommand {
   contribution: CommandContribution;
   handler?: CommandHandler;
   pluginId: string;
+  /** Created by a handler that arrived before the command's contribution */
+  implicit?: boolean;
 }
 
 /**
@@ -36,14 +38,18 @@ export class CommandService implements ICommandExtensionPoint {
     contribution: CommandContribution,
     pluginId: string,
   ): void {
-    if (this.commands.has(contribution.id)) {
+    const existing = this.commands.get(contribution.id);
+    if (existing && !existing.implicit) {
       console.warn(`Command already registered: ${contribution.id}`);
       return;
     }
 
+    // A plugin activated while it was being registered (activation event
+    // '*') registers its handlers before its contributions: keep the handler.
     this.commands.set(contribution.id, {
       contribution,
       pluginId,
+      handler: existing?.handler,
     });
   }
 
@@ -62,6 +68,7 @@ export class CommandService implements ICommandExtensionPoint {
         contribution: { id: commandId, title: commandId },
         handler,
         pluginId,
+        implicit: true,
       });
     } else {
       command.handler = handler;
