@@ -1,9 +1,6 @@
 <p>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/orcher-io/workbench/main/assets/banner.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/orcher-io/workbench/main/assets/banner-light.svg">
-    <img alt="ORCHER Workbench" src="https://raw.githubusercontent.com/orcher-io/workbench/main/assets/banner.svg" width="100%">
-  </picture>
+  <img alt="ORCHER Workbench" src="https://raw.githubusercontent.com/orcher-io/workbench/main/assets/banner.svg#gh-dark-mode-only" width="100%">
+  <img alt="ORCHER Workbench" src="https://raw.githubusercontent.com/orcher-io/workbench/main/assets/banner-light.svg#gh-light-mode-only" width="100%">
 </p>
 
 <p align="center"><sub>An IDE-style React shell where every feature is a plugin.</sub></p>
