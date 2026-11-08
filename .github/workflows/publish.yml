@@ -1,0 +1,49 @@
+name: Publish
+
+# Publishes every package whose version is not on npm yet; packages already
+# published at their current version are skipped. Bump versions in a PR
+# (`pnpm release --skip-publish`), merge it, then run this.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # npm provenance
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm exec nx run-many -t build
+
+      - name: Test
+        run: pnpm run test:run
+
+      - name: Publish
+        run: >-
+          pnpm -r
+          --filter "./packages/*"
+          --filter "./plugins/builtin/*"
+          publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: 'true'
