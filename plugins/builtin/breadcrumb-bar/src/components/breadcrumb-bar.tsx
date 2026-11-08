@@ -568,7 +568,7 @@ export const BreadcrumbBar = memo(function BreadcrumbBar({
             onDuplicateTab={() => {
               if (activeTab) {
                 const dupUri = `${activeTab.uri}#dup-${Date.now()}`;
-                openTab({ title: activeTab.title, editorId: activeTab.editorId, uri: dupUri, icon: activeTab.icon, groupId: activeTab.groupId, pinned: false, preview: false, dirty: false });
+                openTab({ title: activeTab.title, editorId: activeTab.editorId, uri: dupUri, icon: activeTab.icon, groupId: activeTab.groupId });
               }
               setMenuOpen(false);
             }}

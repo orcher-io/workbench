@@ -2,6 +2,7 @@ import type {
   LayoutState,
   TabState,
   TabGroupNode,
+  TabInit,
   TabOpenOptions,
 } from '../models';
 import { findNode, findTabGroup, cloneLayout } from './tree-utils';
@@ -27,7 +28,7 @@ export interface TabOperationResult {
  */
 export function openTab(
   layout: LayoutState,
-  tabData: Omit<TabState, 'id'>,
+  tabData: TabInit,
   options: TabOpenOptions = {},
 ): TabOperationResult {
   const newLayout = cloneLayout(layout);
@@ -38,6 +39,7 @@ export function openTab(
     id: tabId,
     pinned: options.pin ?? tabData.pinned ?? false,
     preview: options.preview ?? tabData.preview ?? false,
+    dirty: tabData.dirty ?? false,
   };
 
   const targetPaneId = options.paneId ?? newLayout.activePaneId;
