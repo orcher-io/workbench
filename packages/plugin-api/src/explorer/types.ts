@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { Disposable } from '../extension-points/types';
 
 /**
@@ -58,6 +59,11 @@ export interface ExplorerRegistrationOptions {
   showStatusBar?: boolean;
   /** Show expand/collapse all buttons */
   showExpandCollapseAll?: boolean;
+  /**
+   * The icon drawn before an item, from the item (its `icon` id, say).
+   * Without it, items get the tree's file and folder icons.
+   */
+  renderItemIcon?: (item: ExplorerMenuItem, expanded: boolean) => ReactNode;
 }
 
 /**

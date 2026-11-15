@@ -11,6 +11,7 @@ export default defineConfig({
     include: [
       'packages/*/src/**/*.{test,spec}.{ts,tsx}',
       'plugins/*/src/**/*.{test,spec}.{ts,tsx}',
+      'plugins/*/*/src/**/*.{test,spec}.{ts,tsx}',
     ],
     exclude: ['**/node_modules/**', '**/dist/**', '**/.next/**'],
     coverage: {
