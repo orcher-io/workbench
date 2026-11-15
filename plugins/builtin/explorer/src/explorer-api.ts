@@ -82,6 +82,9 @@ export class ExplorerAPI implements IExplorerAPI {
           ? 'folder'
           : 'file',
       getItemName: (element) => element.item.label,
+      renderIcon: options.renderItemIcon
+        ? (element, expanded) => options.renderItemIcon!(element.item, expanded)
+        : undefined,
     };
 
     const treeViewDisposable = this.treeViewService.registerTreeDataProvider(
