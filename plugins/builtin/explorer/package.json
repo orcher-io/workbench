@@ -1,6 +1,6 @@
 {
   "name": "@orcher/workbench-plugin-explorer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Explorer plugin with simple registration API and URL routing",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
